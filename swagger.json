@@ -1,0 +1,122 @@
+{"swagger" : "2.0",
+"info" : {
+    "version" : "1.0.0",
+    "title" : "Meraki API json"
+    },
+"paths" : {
+    "/api/MerakiData" : {
+        "get" : {
+            "tags" : ["course"],
+            "summary" : "List of courses",
+            "operationId" : "GetListCourses",
+            "responses" : {
+              "200" : {
+                "discription" : "success"
+              }
+            }
+        },
+        "post" : {
+          "tags" : ["course"],
+          "summary" : "create new courses",
+          "operationId" : "CreateCourses",
+          "parameters" : [
+            {
+              "in" : "body",
+              "name" : "body",
+              "description" : "course object added to in the course",
+              "required" : true,
+              "schema" : {
+                "$ref" : "#/definitions/Meraki_courses"
+              }
+            }
+          ],
+          "responses" : {
+            "200" : {
+              "discription" : "success"
+            }
+          }
+        }
+    },
+    "/api/MerakiData/{courseId}" : {
+        "put" : {
+          "tags" : ["course"],
+          "summary" : "update course by ID",
+          "operationId" : "updateCourse",
+          "parameters" : [
+            {
+              "in" : "path",
+              "name" : "courseId",
+              "description" : "courses that need to update by courseId",
+              "required" : true,
+              "type" : "string"
+            },
+            {
+              "in" : "body",
+              "name" : "body",
+              "description" : "course objects update by couseId",
+              "required" : true,
+              "schema" : {
+                "$ref" : "#/definitions/Meraki_courses"
+              }
+            }
+          ],
+            "responses" :{
+              "200" : {
+                "discription" : "success"
+              }
+            }
+        },
+        "delete": {
+          "tags": ["Course"],
+          "summary": "Delete course by ID.",
+          "operationId": "deleteCourses",
+          "parameters": [
+            {
+              "name": "courseId",
+              "in": "path",
+              "description": "Delete couses by courseId",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+    }
+},
+"definitions": {
+    "Meraki_courses": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "logo": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "string"
+        },
+        "days_to_complete": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "short_description": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "course_type": {
+          "type": "string"
+        }, 
+        "lang_available": {
+          "type": "string"
+        }
+      }
+    }
+}
+}
